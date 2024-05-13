@@ -30,5 +30,5 @@ on taskbar)
 
 ## Bugs:
 
-•Wallpaper Will Reset When Changing From Light & Dark Mode
+•Wallpaper Will Reset When Changing From Light & Dark Mode  
 •Minimize Buttons are Not The Same on Every Application
