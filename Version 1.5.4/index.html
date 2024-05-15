@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML-wind OS</title>
+    <link rel="stylesheet" href="defaultstyle.css">
+    <link rel="stylesheet" href="additionalstyles.css">
+</head>
+
+<body>
+<div id="bootScreen" class="boot-screen">
+</div>
+
+
+
+
+<input type="text" class="search-box" placeholder="Search with Google..." onkeypress="searchGoogle(event)">
+
+<div id="desktop">
+    <div id="logo">
+        <img src="https://i.ibb.co/JyzNLjL/HTML-Wind-OS-2.png" alt="HTML-wind OS Logo" style="width: 100px; height: auto;"> <!-- Adjust the size as needed -->
+    </div>
+</div>
+
+<div class="taskbar">
+    <button class="start-button" onclick="toggleStartMenu()">Start</button>
+    <div id="minimizedWindowsContainer" class="minimized-windows-container"></div>
+    <div id="clock"></div>
+    <div id="batteryStatus" class="battery-status"></div> <!-- Moved up to be next to the clock -->
+
+</div>
+
+<!-- PDF Viewer -->
+<div class="window2" id="pdfViewer">
+    <div class="title-bar">
+        PDF Viewer
+        <button class="minimize" onclick="minimizeWindow('pdfViewer')">_</button>
+        <button class="close-btn" onclick="closeWindow('pdfViewer')">X</button>
+    </div>
+    <div class="content-area">
+        <embed id="pdfView" type="application/pdf" style="width: 100%; height: 80vh;" src="">
+    </div>
+</div>
+
+
+<div id="clockCalendarPopup" class="clock-calendar-popup">
+    <div id="clockDisplay"></div>
+    <div id="calendarDisplay"></div>
+    <div id="analogClock"></div> <!-- Analog clock container -->
+</div>
+
+<div class="start-menu" id="startMenu">
+    <div class="menu-section pinned-apps">
+        <div class="menu-item" onclick="openWindow('settingsPanel')">&#x2699; Settings</div>
+        <div class="menu-item" onclick="openWindow('textEditor')">&#x1F4DD; Text Editor</div>
+        <div class="menu-item" onclick="openWindow('fileManager')">&#x1F4C1; File Manager</div>
+        <div class="menu-item" onclick="openWindow('calculator')">🔢 Calculator</div>
+        <div class="menu-item" onclick="openWindow('webBrowser')">&#x1F310; Web Browser</div>
+    </div>
+    <div class="menu-section power-options">
+        <div class= "menu-item" onclick="openWindow('about')">&#x1F4C4; About</div>
+        <div class="menu-item" onclick="exitOS()">Exit</div>
+    </div>
+</div>
+
+
+<div id="about" class="window">
+    <div class="title-bar">
+        About
+        <button class="minimize" onclick="minimizeWindow('about', 'About')">_</button>
+        <span class="close-btn" onclick="closeWindow('about')">X</span>
+    </div>
+    <div class ="content-area">
+        <h2> HTML-wind OS Is an HTML operating system designed to look like windows.</h2>
+        <h3> HTML-wind OS was created with a combination of HTML, CSS, & JavaScript.</h3>
+        <h4> Copyright ©2024 PaulGamerBoy101 </h4>
+    </div>
+</div>
+
+<div id="webBrowser" class="window2">
+    <div class="title-bar">
+        Web Browser
+        <button class="minimize" onclick="minimizeWindow('webBrowser', 'Web Browser')">_</button>
+        <span class="close-btn" onclick="closeWindow('webBrowser')">X</span>
+    </div>
+    <input type="text" id="urlInput" placeholder="Enter Full URL and press Enter">
+    <iframe id="webDisplay" style="width: 100%; height: 80%; border: none;"></iframe>
+</div>
+
+
+<div id="calculator" class="window">
+    <button class="minimize" onclick="minimizeWindow('calculator', 'Calculator')">_</button>
+    <span class="close-btn" onclick="closeWindow('calculator', 'Calculator')">X</span>    
+    <div id="calculatorScreen" class="calculator-screen"></div>
+    <div class="calculator-buttons">
+        <button onclick="calculatorInput('7')">7</button>
+        <button onclick="calculatorInput('8')">8</button>
+        <button onclick="calculatorInput('9')">9</button>
+        <button onclick="calculatorInput('/')">/</button>
+        <button onclick="calculatorInput('4')">4</button>
+        <button onclick="calculatorInput('5')">5</button>
+        <button onclick="calculatorInput('6')">6</button>
+        <button onclick="calculatorInput('*')">*</button>
+        <button onclick="calculatorInput('1')">1</button>
+        <button onclick="calculatorInput('2')">2</button>
+        <button onclick="calculatorInput('3')">3</button>
+        <button onclick="calculatorInput('-')">-</button>
+        <button onclick="calculatorInput('0')">0</button>
+        <button onclick="calculatorInput('.')">.</button>
+        <button onclick="calculateResult()">=</button>
+        <button onclick="calculatorInput('+')">+</button>
+        <button onclick="clearCalculator()">C</button>
+    </div>
+</div>
+
+<div id="settingsPanel" class="window">
+    <div class="title-bar">
+        Settings
+        <button class="close-btn" onclick="closeWindow('settingsPanel')">X</button>
+    </div>
+    <div class="content-area settings-content">
+        <label>
+            <input type="checkbox" id="darkModeToggle"> Enable Dark Mode
+        </label>
+        <div>
+            <input type="text" id="wallpaperUrl" placeholder="Enter wallpaper URL">
+            <button onclick="changeWallpaper()">Apply Wallpaper</button>
+        </div>
+        <div>
+            <input type="file" id="wallpaperFile" accept="image/*">
+            <button onclick="importWallpaper()">Import Wallpaper</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Text Editor -->
+<div class="window" id="textEditor">
+    <div class="title-bar">
+        Text Editor
+        <button class="minimize" onclick="minimizeWindow('textEditor')">_</button>
+        <button class="close-btn" onclick="closeWindow('textEditor')">X</button>
+    </div>
+    <div class="content-area">
+        <textarea id="editorContent" rows="10" cols="30"></textarea>
+        <button id="saveButton">Save</button>
+        <button onclick="downloadText()">Download</button>
+    </div>
+</div>
+
+<!-- File Manager -->
+<div class="window" id="fileManager">
+    <div class="title-bar">File Manager
+        <button class="minimize" onclick="minimizeWindow('fileManager')">_</button>
+        <button class="close-btn" onclick="closeWindow('fileManager')">X</button>
+        <!-- Import File Button and Hidden File Input -->
+        <button id="importFileButton" onclick="document.getElementById('fileInput').click()">Import File</button>
+        <input type="file" id="fileInput" style="display: none;" multiple onchange="handleFiles(this.files)">
+    </div>
+    <div class="file-manager-container">
+        <div class="sidebar">
+            <div id="fileIconsContainer"></div> <!-- Container for file icons -->
+        </div>
+        <div class="main-content">
+            <div class="toolbar">
+                <!-- Toolbar buttons like New Folder, View options -->
+            </div>
+            <div class="files-list" id="fileList">
+                <!-- Dynamically populated list of files and folders -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="window" id="imageViewer">
+    <div class="title-bar">
+        Image Viewer
+        <button class="minimize" onclick="minimizeWindow('imageViewer')">_</button>
+        <button class="close-btn" onclick="closeWindow('imageViewer')">X</button>
+    </div>
+    <div class="content-area">
+        <img id="imageView" src="" alt="No image" style="max-width: 100%; max-height: 80vh;" />
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

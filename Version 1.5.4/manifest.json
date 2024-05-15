@@ -1,0 +1,24 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "HTML-Wind OS",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "HTML-Wind OS",
+  "start_url": "/https://html-windos-version-153-10147915.codehs.me/index.html",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon"
+    }
+  ],
+  "id": "htmlwindos",
+  "description": "HTML-wind OS Is an HTML operating system designed to look like windows.\nHTML-wind OS was created with a combination of HTML, CSS, &amp; JavaScript.\nCopyright ©2024 PaulGamerBoy101",
+  "lang": "en",
+  "categories": [
+    "games",
+    "utilities"
+  ]
+}
